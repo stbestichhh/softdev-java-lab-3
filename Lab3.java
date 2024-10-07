@@ -22,11 +22,33 @@ public class Lab3 {
     });
 
     printArray(boats);
+    findEqualBoat(boats, new SeaBoat("TargetBoat", "Cargo", 2.0, 3.0, 30));
   }
 
   private static void printArray(SeaBoat[] boats) {
     for (SeaBoat boat : boats) {
       System.out.println(boat.name + " length: " + boat.length + " passangers amount: " + boat.passangersAmount);
+      System.out.println();
+    }
+  }
+
+  private static void findEqualBoat(SeaBoat[] boats, SeaBoat targetBoat) {
+    SeaBoat foundBoat = null;
+
+    for (SeaBoat boat : boats) {
+      if (boat.length == targetBoat.length &&
+          boat.type == targetBoat.type &&
+          boat.width == targetBoat.width &&
+          boat.passangersAmount == targetBoat.passangersAmount) {
+        foundBoat = boat;
+        break;
+      }
+    }
+
+    if (foundBoat != null) {
+      System.out.println("Same boat as " + targetBoat.name + " found in array: " + foundBoat.name);
+    } else {
+      System.out.println("Not found same boat as " + targetBoat.name);
     }
   }
 }
